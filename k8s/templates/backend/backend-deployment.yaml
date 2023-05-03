@@ -23,7 +23,6 @@ spec:
         io.kompose.network/backend: "true"
         io.kompose.network/confd: "true"
         io.kompose.network/frontend: "true"
-        io.kompose.network/rabbitmq: "true"
         io.kompose.network/redis: "true"
         io.kompose.network/elasticsearch: "true"
         io.kompose.network/crontab: "true"

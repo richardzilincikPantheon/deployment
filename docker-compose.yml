@@ -53,7 +53,6 @@ services:
       - confd
       - backend
       - elasticsearch
-      - rabbitmq
       - frontend
       - redis
       - matomo
@@ -86,7 +85,7 @@ services:
       test: curl -f http://yc-frontend/yangre/v1/ping
       interval: 30s
       timeout: 10s
-      retries: 5      
+      retries: 5
     restart: always
 
   api-receiver:
@@ -105,7 +104,6 @@ services:
       - confd
       - backend
       - elasticsearch
-      - rabbitmq
       - frontend
       - redis
     restart: always
@@ -212,7 +210,7 @@ services:
       test: curl -f http://yc-frontend/yangvalidator/v2/ping
       interval: 30s
       timeout: 10s
-      retries: 5      
+      retries: 5
     restart: always
 
 #  elasticsearch:
@@ -278,29 +276,6 @@ services:
   #     MYSQL_RANDOM_ROOT_PASSWORD: '1'
   #   volumes:
   #     - matomo-db:/var/lib/mysql
-
-  rabbit:
-    container_name: yc-rabbit
-    image: "rabbitmq:3-management"
-    environment:
-      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
-      RABBITMQ_DEFAULT_VHOST: "/"
-    labels:
-      NAME: "rabbitmq1"
-    volumes: []
-      # - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
-      # - "./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
-      # - "./autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"
-    networks:
-      - rabbitmq
-    healthcheck:
-      test: ["CMD", "rabbitmqctl", "status"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-    restart: always
 
   module-compilation:
     container_name: yc-module-compilation
@@ -377,8 +352,6 @@ networks:
   backend:
     driver: bridge
   elasticsearch:
-    driver: bridge
-  rabbitmq:
     driver: bridge
   redis:
     driver: bridge

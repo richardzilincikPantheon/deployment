@@ -57,7 +57,6 @@ and then [pushed](https://docs.docker.com/engine/reference/commandline/push/) to
 If everything is okay, you will see something like:
 ```
 NAME                                  READY   STATUS      RESTARTS   AGE
-rabbit-645ccf97b6-l2fdq               1/1     Running     0          64m
 confd-6699f9bc74-btwj2                1/1     Running     0          64m
 redis-8dd96b995-wfbpb                 1/1     Running     0          64m
 admin-ui-pqg26                        0/1     Completed   0          64m

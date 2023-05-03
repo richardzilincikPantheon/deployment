@@ -29,7 +29,6 @@ The deployment uses several services via container images that are
 distributed by third parties, e.g. via DockerHub
 
 * Elasticsearch
-* RabbitMQ
 * NGINX (as the base image of the frontend container, which includes static content)
 
 ## Basic Usage
@@ -47,8 +46,8 @@ The `docker-compose build` should build container images for the
 various components of the YANG Catalog.
 
 The `docker-compose up` will start containers from these images, as
-well as from some third-party container images (e.g. RabbitMQ,
-Redis) and combine them into a functional local deployment
+well as from some third-party container images (e.g. Redis)
+and combine them into a functional local deployment
 of the YANG Catalog, which should be accessible on
 http://localhost
 
@@ -132,10 +131,6 @@ a docker containers that have some specific name (like backend, frontend...).
 This will add a prefix to these names so in this example we would have yc-backend, yc-frontend...
 
 `REDIS_VOLUME` - Directory where redis will store its `dump.rdb` file.
-
-`RABBITMQ_USER=<RABBITMQ_USER>` - rabbitmq username.
-
-`RABBITMQ_PASSWORD=<RABBITMQ PASSWORD>`  - rabbitmq username.
 
 `ELASTICSEARCH_DATA=/var/lib/elasticsearch` - This is only used with local elasticsearch. If AWS
 elasticsearch is used this variables can be set to anything. If local elasticsearch is used this
